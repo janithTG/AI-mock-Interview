@@ -1,0 +1,11 @@
+For authentication - clerk
+create key => create .ev.local (in root) => add the key
+
+folder name (auth) => then next.js not going to consider it as a route
+
+folder name _components => then next.js not going to consider it as a route
+
+Drizzle ORM => Objective relational mapping => service provider - Neon (pgsql)
+
+ npm run db:push  
+ npm run db:studio  
