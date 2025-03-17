@@ -29,8 +29,6 @@ function AddNewInterview() {
     const [jsonResponse, setJsonResponse] = useState([])
     const user = useUser();
 
-    // console.log(user?.user?.primaryEmailAddress?.emailAddress)
-
     const onSubmit = async(e)=>{
         setLoading(true);
         e.preventDefault();
