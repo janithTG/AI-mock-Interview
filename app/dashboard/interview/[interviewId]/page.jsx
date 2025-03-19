@@ -6,10 +6,12 @@ import { eq } from "drizzle-orm";
 import { Lightbulb, WebcamIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
+import { useRouter } from 'next/navigation';
 
 function Interview({ params }) {
   const [interviewData, setInterviewData] = useState();
   const [webCamEnabled, setWebCamEnabled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     GetInterviewDetails();
@@ -64,7 +66,7 @@ function Interview({ params }) {
     </div>
 
     <div className="flex justify-end items-end">
-    <Button>Start Interview</Button>
+      <Button onClick={()=>router.push('/dashboard/interview/'+params?.interviewId+'/start')}>Start Interview</Button>
     </div>
     </div>
   );
