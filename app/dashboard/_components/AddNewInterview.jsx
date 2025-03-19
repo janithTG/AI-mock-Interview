@@ -18,6 +18,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useUser } from '@clerk/nextjs';
 import moment from 'moment';
 import { db } from '@/utils/db';
+import { useRouter } from 'next/navigation';
+
   
 
 function AddNewInterview() {
@@ -26,7 +28,8 @@ function AddNewInterview() {
     const [jobDescription, setJobDescription] = useState();
     const [jobExp, setJobExp] = useState();
     const [loading, setLoading] = useState(false)
-    const [jsonResponse, setJsonResponse] = useState([])
+    const [jsonResponse, setJsonResponse] = useState([]);
+    const router = useRouter();
     const user = useUser();
 
     const onSubmit = async(e)=>{
@@ -53,6 +56,14 @@ function AddNewInterview() {
               createdBy:user?.user?.primaryEmailAddress?.emailAddress,
               createdAt:moment().format('DD-MM-yyyy')
             }).returning({mockId:MockInterview?.mockId});
+
+            if(response){
+              setOpenDialog(false);
+
+              router.push('/dashboard/interview/'+response[0]?.mockId)
+            } 
+              
+              
           }
           else{
             console.log("ERROR")
